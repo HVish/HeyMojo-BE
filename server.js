@@ -3,10 +3,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const app = express();
-const api = require('./api');
+// initalize services
 const config = require('./config');
-const log = require('./log')(config.local);
+const log = require('./app/services/log').init(config.local);
+const db = require('./app/services/db').init(config.db);
+
+const app = express();
+const api = require('./app/api');
+
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -26,5 +30,5 @@ app.listen(config.local.port, err => {
     log.info(`environment: ${config.local.env}`);
     log.info(`port: ${config.local.port}`);
     log.info(`===================================`);
-    
+
 });
