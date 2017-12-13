@@ -15,15 +15,20 @@ router.route('/auth').post((req, res) => {
     const username = req.body.username;
     const password = crypto.createHash('md5').update(req.body.password).digest("hex");
 
-    Users.findOne({ username, password }).then(user => {
-        if (!user) return res.status(401).json({
-            message: 'Wrong credentials '
+    Users
+        .findOne({ username, password })
+        .populate('education')
+        .populate('work')
+        .then(user => {
+            if (!user) return res.status(401).json({
+                message: 'Wrong credentials '
+            });
+            return res.json(user);
+        })
+        .catch(err => {
+            console.log(err);
+            return res.status(500).json({ message: err.message });
         });
-        return res.json(user);
-    }).catch(err => {
-        console.log(err);
-        return res.status(500).json({ message: err.message });
-    });
 });
 
 module.exports = router;
