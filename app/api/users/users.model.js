@@ -26,6 +26,7 @@ const userSchema = new Schema({
         type: Date,
         required: true
     },
+    profilePic: String,
     hobbies: [String],
     fbToken: String,
     education: [{ type: Schema.Types.ObjectId, ref: 'organizations' }],

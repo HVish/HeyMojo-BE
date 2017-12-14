@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const config = require('./config');
 const log = require('./app/services/log').init(config.local);
 const db = require('./app/services/db').init(config.db);
+const aws = require('./app/services/aws').init(config.local.aws);
 
 const app = express();
 const api = require('./app/api');
