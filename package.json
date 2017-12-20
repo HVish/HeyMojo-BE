@@ -14,6 +14,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.6",
+    "nodemailer": "^4.4.1",
     "skipper-better-s3": "^2.2.1",
     "underscore": "^1.8.3",
     "uuid": "^3.1.0",

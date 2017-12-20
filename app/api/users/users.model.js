@@ -17,6 +17,12 @@ const userSchema = new Schema({
         unique: true,
         required: true
     },
+    email: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: true
+    },
     password: {
         type: String,
         select: false,
@@ -29,6 +35,7 @@ const userSchema = new Schema({
     profilePic: String,
     hobbies: [String],
     fbToken: String,
+    resetToken: String,
     education: [{ type: Schema.Types.ObjectId, ref: 'organizations' }],
     work: [{ type: Schema.Types.ObjectId, ref: 'organizations' }]
 });
